@@ -1,7 +1,12 @@
 const express= require("express");
 const app= express();
 
-const port=9000;
+const port=process.env.PORT || 9000;
+
+app.get("/",(req,res)=> {
+    res.redirect("/posts");
+});
+
 const path= require("path");
 const{v4: uuidv4}=require('uuid');
 uuidv4();
@@ -82,5 +87,5 @@ app.delete("/posts/:id",(req,res)=>{
 
 
 app.listen(port,()=>{
-    console.log("listening to port :9000");
+    console.log(`listening to port ${port}`);
 })
