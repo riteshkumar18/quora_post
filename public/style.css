@@ -1,0 +1,28 @@
+*{
+    color: black;
+}
+
+a{
+    color: #1E90FF;   /* DodgerBlue - stands out on warm background */
+    margin-right: 20px;
+}
+
+h1{
+    color: maroon;
+}
+
+body{
+    background-color: black;
+}
+
+.post{
+    background-color: #F5DEB3;  /* Wheat - warm, light background */
+}
+
+button{
+    color: crimson;
+}
+
+.user{
+    font-style: italic;
+}
