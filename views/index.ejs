@@ -10,20 +10,21 @@
     <h1>Quora posts</h1>
     <% for(let post of posts) { %>
         <div class="post">
-            <h3 class="user"> @<%= post.username %></h3>
-            <h4 class="content"> <%= post.content %></h4>
+            <h3 class="user">@<%= post.username %></h3>
+            <h4 class="content"><%= post.content %></h4>
 
             <br>
-            <a href="http://localhost:9000/posts/<%= post.id %>">see in details</a>
-             <a href="http://localhost:9000/posts/<%= post.id %>/edit">Edit</a>
-     <form method="post" action="/posts/<%=post.id%>?_method=DELETE">
-        <br>
-             <button>Delete post</button>
-             </form>
-  </div>
+            <a href="/posts/<%= post.id %>">see in details</a>
+            <a href="/posts/<%= post.id %>/edit">Edit</a>
+            
+            <form method="post" action="/posts/<%= post.id %>?_method=DELETE">
+                <br>
+                <button>Delete post</button>
+            </form>
+        </div>
     <% } %>
-    <br>
-    <br>
-    <a href="http://localhost:9000/posts/new">Create new post</a>
+    
+    <br><br>
+    <a href="/posts/new">Create new post</a>
 </body>
 </html>
