@@ -83,7 +83,29 @@ app.delete("/posts/:id",(req,res)=>{
      posts=posts.filter((p)=> id!== p.id);
      res.redirect("/posts");
 
-})
+});
+
+
+app.post("/posts/:id/like", (req, res) => {
+    let { id } = req.params;
+    let post = posts.find(p => p.id === id);
+    if (post) {
+        post.likes = (post.likes || 0) + 1;
+    }
+    res.redirect("/posts");
+});
+
+
+app.post("/posts/:id/comment", (req, res) => {
+    let { id } = req.params;
+    let { comment } = req.body;
+    let post = posts.find(p => p.id === id);
+    if (post) {
+        if (!post.comments) post.comments = [];
+        post.comments.push(comment);
+    }
+    res.redirect("/posts");
+});
 
 
 app.listen(port,()=>{
