@@ -8,23 +8,44 @@
 </head>
 <body>
     <h1>Quora posts</h1>
+
     <% for(let post of posts) { %>
         <div class="post">
             <h3 class="user">@<%= post.username %></h3>
             <h4 class="content"><%= post.content %></h4>
 
             <br>
-            <a href="/posts/<%= post.id %>">see in details</a>
-            <a href="/posts/<%= post.id %>/edit">Edit</a>
+          
+            <form method="POST" action="/posts/<%= post.id %>/like">
+                <button type="submit">👍 Like (<%= post.likes || 0 %>)</button>
+            </form>
+  <br>
             
-            <form method="post" action="/posts/<%= post.id %>?_method=DELETE">
-                <br>
+            <form method="POST" action="/posts/<%= post.id %>/comment">
+                <input type="text" name="comment" placeholder="Add a comment" required>
+                <button type="submit">Comment</button>
+            </form>
+
+          
+            <ul>
+                <% if (post.comments) { %>
+                    <% for (let c of post.comments) { %>
+                        <li><%= c %></li>
+                    <% } %>
+                <% } %>
+            </ul>
+
+            <br>
+            <a href="http://localhost:9000/posts/<%= post.id %>">See in details</a>
+            <a href="http://localhost:9000/posts/<%= post.id %>/edit">Edit</a><br>
+            <form method="POST" action="/posts/<%= post.id %>?_method=DELETE">
                 <button>Delete post</button>
             </form>
         </div>
     <% } %>
-    
+
     <br><br>
-    <a href="/posts/new">Create new post</a>
+    <a href="http://localhost:9000/posts/new">Create new post</a>
 </body>
 </html>
+
